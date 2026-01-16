@@ -1,0 +1,26 @@
+# macOS
+.DS_Store
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+
+# SQLite database
+db.sqlite3
+
+# IDE/editor configs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Linter configs
+.pylintrc
+
+# Pipenv environment file (optional, if using Pipenv)
+*.env

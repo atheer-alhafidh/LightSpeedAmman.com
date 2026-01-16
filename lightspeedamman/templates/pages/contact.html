@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Contact - Light Speed Amman</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static './css/navbar.css' %}">
+    <style>
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #eef1f5;
+            color: #333;
+        }
+
+        nav button:hover,
+        nav button.active,
+        .dropdown:hover .dropbtn {
+            background: #0a84ff;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: white;
+            min-width: 160px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            display: block;
+            text-decoration: none;
+        }
+
+        .dropdown-content a:hover {
+            background: #f5f5f5;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .container {
+            padding: 25px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <a href="{% url 'index' %}" class="nav-link">Home</a>
+    <a href="{% url 'about_us' %}" class="nav-link">About Us</a>
+
+    <div class="dropdown">
+        <a href="{% url 'configure' %}" class="nav-link">Configure</a>
+        <div class="dropdown-content">
+            <a href="{% url 'configure' 'LS6' %}" onclick="selectCarPage('LS6')">LS6</a>
+            <a href="{% url 'configure' 'LS8' %}" onclick="selectCarPage('LS6')">LS8</a>
+        </div>
+    </div>
+
+    <button class="active">Contact</button>
+    <a href="{% url 'book_test_drive' %}" class="nav-link">Book a Test Drive</a>
+    {% if user.is_authenticated %}
+        <form method="post" action="{% url 'logout' %}" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="nav-link logout-btn">
+                Logout
+            </button>
+        </form>
+    {% else %}
+        <a href="{% url 'login' %}" class="nav-link">Login</a>
+        <a href="{% url 'register' %}" class="nav-link">Register</a>
+    {% endif %}
+</nav>
+
+<div class="container">
+    <div class="card">
+        <h2>Contact Us</h2>
+        <p>Email: info@lightspeedamman.com</p>
+        <p>Phone: +962 6 000 0000</p>
+    </div>
+</div>
+
+</body>
+</html>

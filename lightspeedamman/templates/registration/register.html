@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Account - Light Speed Amman</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static './css/navbar.css' %}">
+
+    <style>
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            margin: 0;
+            background: #eef1f5;
+        }
+
+        .wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 90px);
+        }
+
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,.15);
+            width: 360px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background: #0a84ff;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <a href="{% url 'index' %}" class="nav-link">Home</a>
+    <a href="{% url 'about_us' %}" class="nav-link">About Us</a>
+    <a href="{% url 'configure' %}" class="nav-link">Configure</a>
+    <a href="{% url 'contact' %}" class="nav-link">Contact</a>
+    <a href="{% url 'book_test_drive' %}" class="nav-link">Book a Test Drive</a>
+
+    {% if user.is_authenticated %}
+        <form method="post" action="{% url 'logout' %}" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="nav-link logout-btn">
+                Logout
+            </button>
+        </form>
+    {% else %}
+        <a href="{% url 'login' %}" class="nav-link">Login</a>
+        <a href="{% url 'register' %}" class="nav-link active">Register</a>
+    {% endif %}
+</nav>
+
+<div class="wrapper">
+    <div class="card">
+        <h2>Create Account</h2>
+
+        {% if form.errors %}
+            <div class="error">
+                {{ form.errors }}
+            </div>
+        {% endif %}
+
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.username }}
+            {{ form.email }}
+            {{ form.password1 }}
+            {{ form.password2 }}
+
+            <button type="submit">Create Account</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
