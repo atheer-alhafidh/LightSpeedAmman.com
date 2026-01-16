@@ -125,6 +125,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'lightspeedamman/static')
 
 
 # redirect to homepage after login
-LOGIN_REDIRECT_URL = '/lightspeedamman/'
+LOGIN_REDIRECT_URL = '/'
 # optional: redirect to homepage after logout
-LOGOUT_REDIRECT_URL = '/lightspeedamman/'
+LOGOUT_REDIRECT_URL = '/'
