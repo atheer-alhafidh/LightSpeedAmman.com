@@ -16,7 +16,7 @@ class CarConfigurationAdmin(admin.ModelAdmin):
         'interior',
     )
 
-    list_filter = ('car_model', 'user')
+    list_filter = ('car_model', 'user', 'package', 'exterior', 'interior')
     search_fields = ('user__username',)
 
 
