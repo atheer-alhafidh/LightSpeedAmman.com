@@ -1,11 +1,8 @@
 from django.contrib import admin
 from .models import TestDrive, CarConfiguration
 
-# Customize the admin interface for the TestDrive model
-
 
 class TestDriveAdmin(admin.ModelAdmin):
-    # Fields to display in the admin list view
     list_display = ('first_name', 'last_name', 'phone',
                     'email', 'preferred_date', 'preferred_time')
 

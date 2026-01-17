@@ -4,35 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Login - Light Speed Amman</title>
-    <link rel="stylesheet" href="{% static './css/navbar.css' %}">
+    {% load static %}
+    <link rel="stylesheet" href="{% static './css/layout.css' %}">
     <style>
-        body {
-            font-family: 'Inter', Arial, sans-serif;
-            background: #eef1f5;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav {
-            background: #1e1e1e;
-            padding: 12px 20px;
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-
-        nav a.nav-link {
-            color: white;
-            text-decoration: none;
-            padding: 10px 18px;
-            border-radius: 8px;
-            transition: 0.25s;
-        }
-
-        nav a.nav-link:hover {
-            background: #0a84ff;
-        }
-
         .login-wrapper {
             display: flex;
             justify-content: center;
@@ -84,7 +58,15 @@
 <nav>
     <a href="{% url 'index' %}" class="nav-link">Home</a>
     <a href="{% url 'about_us' %}" class="nav-link">About Us</a>
-    <a href="{% url 'configure' %}" class="nav-link">Configure</a>
+
+    <div class="dropdown">
+        <a href="{% url 'configure' %}" class="nav-link">Configure</a>
+        <div class="dropdown-content">
+            <a href="{% url 'configure' 'LS6' %}" onclick="selectCarPage('LS6')">LS6</a>
+            <a href="{% url 'configure' 'LS8' %}" onclick="selectCarPage('LS6')">LS8</a>
+        </div>
+    </div>
+
     <a href="{% url 'contact' %}" class="nav-link">Contact</a>
     <a href="{% url 'book_test_drive' %}" class="nav-link">Book a Test Drive</a>
     {% if user.is_authenticated %}

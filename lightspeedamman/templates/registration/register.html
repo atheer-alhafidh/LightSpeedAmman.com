@@ -5,7 +5,7 @@
     <title>Create Account - Light Speed Amman</title>
 
     {% load static %}
-    <link rel="stylesheet" href="{% static './css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static './css/layout.css' %}">
 
     <style>
         body {
@@ -55,7 +55,15 @@
 <nav>
     <a href="{% url 'index' %}" class="nav-link">Home</a>
     <a href="{% url 'about_us' %}" class="nav-link">About Us</a>
-    <a href="{% url 'configure' %}" class="nav-link">Configure</a>
+
+    <div class="dropdown">
+        <a href="{% url 'configure' %}" class="nav-link">Configure</a>
+        <div class="dropdown-content">
+            <a href="{% url 'configure' 'LS6' %}" onclick="selectCarPage('LS6')">LS6</a>
+            <a href="{% url 'configure' 'LS8' %}" onclick="selectCarPage('LS6')">LS8</a>
+        </div>
+    </div>
+
     <a href="{% url 'contact' %}" class="nav-link">Contact</a>
     <a href="{% url 'book_test_drive' %}" class="nav-link">Book a Test Drive</a>
 

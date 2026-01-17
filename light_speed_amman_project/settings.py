@@ -37,8 +37,7 @@ if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 
-# Application definition
-
+# Application definition, most are installed by Django by default
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -46,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # register our lightspeedamman app so Django is aware of our models when we run makemigrations
     'lightspeedamman.apps.LightSpeedConfig'
 ]
 
